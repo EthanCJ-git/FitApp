@@ -1,0 +1,178 @@
+
+html, body
+{
+	color: lightblue;
+	height: 100%;
+	text-align: center;
+}
+
+html
+{
+	background-image: url('GraysonFeb-2.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.addbutton, .newfoodbutton
+{
+	align-self: center;
+	display: block;
+	width: 90%;
+	height: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5vh;
+	border: none;
+	padding: 5px 5px;
+	color: blue;
+	background-color: rgba(200, 200, 255, 0.9);
+}
+
+.addbutton span, .newfoodbutton span
+{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 300%;
+	transition: 0.4s;
+	position: relative;
+}
+
+.addbutton span:after, .newfoodbutton span:after
+{
+	content: '\00bb';
+	font-size: 200%;
+	transition: 0.4s;
+	position: absolute;
+	right: -20px;
+	top: -32px;
+	opacity: 0;
+}
+
+.addbutton:hover span, .newfoodbutton:hover span
+{
+	padding-right: 40px;
+}
+
+.addbutton:hover span:after, .newfoodbutton:hover span:after
+{
+	opacity: 1;
+	right: 0;
+}
+
+.addbutton:hover, .newfoodbutton:hover
+{
+	align-self: center;
+	display: block;
+	width: 90%;
+	height: 90%;
+	border: 2px solid #008CBA;
+	padding: 5px 5px;
+	color: blue;
+	background-color: rgba(200, 200, 255, 1);
+}
+
+.statbutton
+{
+	align-self: center
+	display: block;
+	width: 90%;
+	height: 90%;
+	border: none;
+	padding: 5px 5px;
+	color: blue;
+	background-color: rgba(200, 200, 255, 0.9);
+}
+
+.statbutton span, .retfoodbutton span, .searchbutton span
+{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 300%;
+	transition: 0.4s;
+	position: relative;
+}
+
+.statbutton span:after, .retfoodbutton span:after, .searchbutton span:after
+{
+	content: '\00bb';
+	font-size: 200%;
+	transition: 0.4s;
+	position: absolute;
+	right: -20px;
+	top: -30px;
+	opacity: 0;
+}
+
+.statbutton:hover span, .retfoodbutton:hover span, .searchbutton:hover span
+{
+	padding-right: 40px;
+}
+
+.statbutton:hover span:after, .retfoodbutton:hover span:after, .searchbutton:hover span:after
+{
+	opacity: 1;
+	right: 0;
+}
+.statbutton:hover
+{
+	align-self: center
+	display: flex;
+	width: 90%;
+	height: 90%;
+	border: 2px solid #008CBA;
+	padding: 5px 5px;
+	color: blue;
+	background-color: rgba(200, 200, 255, 1);
+}
+
+.searchbutton
+{
+	align-self: center
+	display: block;
+	width: 70%;
+	height: 90%;
+	margin-right: 2.5%;
+	border: none;
+	padding: 5px 5px;
+	color: blue;
+	background-color: rgba(200, 200, 255, 0.9);
+}
+
+.retfoodbutton
+{
+	align-self: center
+	display: block;
+	width: 17.5%;
+	height: 90%;
+	border: none;
+	padding: 5px 5px;
+	color: blue;
+	background-color: rgba(200, 200, 255, 0.9);
+}
+
+.retfoodbutton:hover, .searchbutton:hover
+{
+	border: 2px solid #008CBA;
+	background-color: rgba(200, 200, 255, 1);
+}
+
+#application
+{
+	text-align: center;
+}
+
+#parent
+{
+	height: 100vh;
+	text-align: center;
+}
+
+#d1
+{
+	text-align: center;
+	height: 48vh;
+}
+
+#d2
+{
+	text-align: center;
+	height: 48vh;
+}
