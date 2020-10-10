@@ -5,9 +5,13 @@ const views = {
 	FOOD: 2,
 	STATS: 3,
 	ADD: 4,
-	SEARCH: 5
+	SEARCH: 5,
+	NEWFOOD: 6
 };
 
+/*************
+ ** BUTTONS **
+ *************/
 //add food button
 class AddButton extends React.Component 
 {
@@ -83,6 +87,122 @@ class MyButton extends React.Component
 	}
 }
 
+/***********
+ ** FORMS **
+ ***********/
+//generic vertical form
+class NewFoodForm extends React.Component
+{
+	constructor(props) {
+		super(props)
+		this.state = {
+			fName: '',
+			cals: '',
+			prot: '',
+			carbs: '',
+			fat: ''
+			};
+		this.changeHandler = this.changeHandler.bind(this);
+		this.submitHandler = this.submitHandler.bind(this);
+	}
+
+	//curried function that returns an event handler for a given field
+	changeHandler = (key) => (event) =>
+	{
+		this.setState({[key]: event.target.value});
+		console.log('aaah');
+	}
+	
+	//handle submit
+	submitHandler(event)
+	{
+		event.preventDefault();
+		
+		if(this.state.fName.length == 0){
+			alert('Name must not be empty');
+			return;
+		}
+		if(!parseFloat(this.state.cals)){
+			alert('Please provide a valid number of calories');
+			return;
+		}
+		if(!parseFloat(this.state.prot) && this.state.prot.length > 0){
+			alert('Protein must be a number');
+			return;
+		}
+		if(!parseFloat(this.state.carbs) && this.state.carbs.length > 0){
+			alert('Carbs must be a number');
+			return;
+		}
+		if(!parseFloat(this.state.fat) && this.state.fat.length > 0){
+			alert('Fat must be a number');
+			return;
+		}
+
+		//send json to API
+		fetch(window.location.hostname + ":8080/FitAppBackend/API/food", {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				name: this.state.fName,
+				cals: this.state.cals,
+				prot: this.state.prot,
+				carbs: this.state.carbs,
+				fat: this.state.fat
+			})		
+		});
+		alert(window.location.hostname + "/FitAppBackend/API/food");
+	}
+
+	render() {
+		return(
+		<form onSubmit={this.submitHandler}>
+		<p className='nameLabel'>Name: </p>
+		<div className='vertDiv'>
+			<input	className='vert' 
+				type='text'
+				onChange={this.changeHandler('fName')}
+			/>
+		</div>
+		<div className='vertDiv'>
+			<input	className='vert' 
+				type='text'
+				onChange={this.changeHandler('cals')}
+			/>
+			<span>	kilocalories</span>
+		</div>
+		<div className='vertDiv'>
+			<input	className='vert' 
+				type='text'
+				onChange={this.changeHandler('prot')}
+			/>
+			<span>	protein (grams)</span>
+		</div>
+		<div className='vertDiv'>
+			<input	className='vert' 
+				type='text'
+				onChange={this.changeHandler('carbs')}
+			/>
+			<span>	carbs (grams)</span>
+		</div>
+		<div className='vertDiv'>
+			<input	className='vert' 
+				type='text'
+				onChange={this.changeHandler('fat')}
+			/>
+			<span>	fat (grams)</span>
+		</div>
+		<div>
+			<input type='submit' value='Submit'/>
+		</div>
+		</form>
+		);
+	}	
+}
+
 //master element
 class MainPage extends React.Component
 {
@@ -93,7 +213,8 @@ class MainPage extends React.Component
 			view: views.LANDING,
 		}
 	}
-
+	
+	//TODO: these could be done with curried functions taking an enum
 	//function for when addButton clicked
 	addClicked()
 	{
@@ -124,6 +245,7 @@ class MainPage extends React.Component
 		this.setState({view: views.LANDING});
 	}
 
+
 	render()
 	{
 		if(this.state.view == views.LANDING) {
@@ -148,7 +270,7 @@ class MainPage extends React.Component
 		<div id='parent'>
 			<div id='d1'>
 			<NewFoodButton
-				onClick={() => this.addClicked()}
+				onClick={() => this.newClicked()}
 			/>
 			</div>
 			<div id='d2'>
@@ -161,9 +283,17 @@ class MainPage extends React.Component
 			/>
 			</div>
 		</div>
-		)
+		);
 		}//end if
 		if(this.state.view == views.STATS) {return(null)}
+
+		if(this.state.view == views.ADD) {
+		return(
+		<div id='parent'>
+			<NewFoodForm/>
+		</div>
+		);
+		}
 	}
 }
 

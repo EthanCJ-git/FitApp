@@ -154,6 +154,42 @@ html
 	background-color: rgba(200, 200, 255, 1);
 }
 
+.vert
+{
+	display: inline-block;
+	margin-left: 0;
+	margin-right: auto;
+	text-align: left;
+	border: 2px solid orange;
+	height: 13vh;
+	width: 25vw;
+	font-size: 200%;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.nameLabel
+{
+	font-size: 125%;
+	color: orange;
+}
+
+.vertDiv span
+{
+	display: inline-block;
+	width: 0px;
+	position: relative;
+	left: 1vw;
+	font-size: 125%;
+	color: rgba(200, 200, 255, 1);
+}
+
+.vertDiv
+{
+	height: 15vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #application
 {
 	text-align: center;
@@ -163,6 +199,7 @@ html
 {
 	height: 100vh;
 	text-align: center;
+	display: block;
 }
 
 #d1
