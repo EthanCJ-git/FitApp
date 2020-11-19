@@ -110,7 +110,6 @@ class NewFoodForm extends React.Component
 	changeHandler = (key) => (event) =>
 	{
 		this.setState({[key]: event.target.value});
-		console.log('aaah');
 	}
 	
 	//handle submit
@@ -141,7 +140,7 @@ class NewFoodForm extends React.Component
 
 		//send json to API
 		fetch(window.location.hostname + ":8080/FitAppBackend/API/food", {
-			method: 'POST',
+			method: 'PUT',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json'
@@ -154,7 +153,6 @@ class NewFoodForm extends React.Component
 				fat: this.state.fat
 			})		
 		});
-		alert(window.location.hostname + "/FitAppBackend/API/food");
 	}
 
 	render() {
@@ -294,6 +292,10 @@ class MainPage extends React.Component
 		</div>
 		);
 		}
+	//print token
+	const params = new URLSearchParams(window.location.search)
+	if(params.has('access_token');
+	{alert(params.get('access_token'));}
 	}
 }
 

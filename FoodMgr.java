@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.annotation.*;
@@ -48,12 +49,24 @@ public class FoodMgr
 		String sql = "INSERT INTO Food VALUES (?,?,?,?,?);";
 		PreparedStatement state = conn.prepareStatement(sql);
 		
-		state.setString(1, data.name);
-		state.setDouble(2, data.cals);
-		state.setDouble(3, data.prot);
-		state.setDouble(4, data.carbs);
-		state.setDouble(5, data.fat);
+		state.setString(1, data.getName());
+		state.setDouble(2, data.getCals());
+		state.setDouble(3, data.getProt());
+		state.setDouble(4, data.getCarbs());
+		state.setDouble(5, data.getFat());
 		
 		state.executeUpdate();
+	}
+	
+	public void eatFood() throws SQLException
+	{
+		String date = LocalDate.now().toString();
+		String sql = "INSERT INTO UserHist VALUES (?, ?, ?, ?);";
+		PreparedStatement state = conn.prepareStatement(sql);
+		
+		state.setString(1, "Ethan"); //will fix this when I add user authentication
+		state.setString(2, data.getName());
+		state.setInt(3, data.getCals());
+		state.setString(4, date);
 	}
 }

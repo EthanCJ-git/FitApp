@@ -81,6 +81,7 @@ public class RestRoot
     	{
 			FoodMgr adder = new FoodMgr(content);
 			adder.addFood();
+			adder.eatFood();
 		} catch (Exception e) 
     	{
 			//TODO: find a better way to handle this, will need to collab w front end
