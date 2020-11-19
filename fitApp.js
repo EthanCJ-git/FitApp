@@ -216,7 +216,10 @@ class MainPage extends React.Component
 	//function for when addButton clicked
 	addClicked()
 	{
-		this.setState({view: views.FOOD});
+	    this.setState({view: views.FOOD});
+	    //print token
+	    auth = googleUser.getAuthResponse();
+	    alert(auth.id_token);
 	}
 
 	//function for when StatButton clicked
@@ -292,10 +295,12 @@ class MainPage extends React.Component
 		</div>
 		);
 		}
-	//print token
-	const params = new URLSearchParams(window.location.search)
-	if(params.has('access_token');
-	{alert(params.get('access_token'));}
+	    //print token
+            auth = googleUser.getAuthResponse(true);
+	    if(auth.id_token);
+	    {
+		alert(auth.id_token);
+	    }
 	}
 }
 

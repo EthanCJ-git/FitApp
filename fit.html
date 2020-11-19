@@ -18,6 +18,15 @@
 	</button>
   </div>
 
+  <script>
+    var auth;
+    function onSignIn(googleUser)
+    {
+    auth = googleUser.getAuthResponse();
+    alert(auth.id_token);
+    }
+  </script>
+
   <script type="text/babel" src="fitApp.js"></script>
   <!-- import my JS -->
 </body>
